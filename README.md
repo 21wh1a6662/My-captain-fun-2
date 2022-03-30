@@ -1,27 +1,40 @@
 # My-captain-fun-2
 #include <stdio.h>
  
-int sum (int a);
+int primeno(int, int);
  
 int main()
 {
-    int num, result;
- 
-    printf("Enter the number: ");
+    int num, check;
+    printf("Enter a number: ");
     scanf("%d", &num);
-    result = sum(num);
-    printf("Sum of digits in %d is %d\n", num, result);
-    return 0;
-}
- 
-int sum (int num)
-{
-    if (num != 0)
+    check = primeno(num, num / 2);
+    if (check == 1)
     {
-        return (num % 10 + sum (num / 10));
+        printf("%d is a prime number\n", num);
     }
     else
     {
-       return 0;
+        printf("%d is not a prime number\n", num);
     }
+    return 0;
 }
+ 
+int primeno(int num, int i)
+{
+    if (i == 1)
+    {
+   return 1;
+    }
+    else
+    {
+       if (num % i == 0)
+       {
+         return 0;
+       }
+       else
+       {
+         return primeno(num, i - 1);
+       }       
+    }
+} 
